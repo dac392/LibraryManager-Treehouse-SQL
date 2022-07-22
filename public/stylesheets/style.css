@@ -7,6 +7,11 @@ hr{
   margin-bottom: 2em;
 }
 
+.table-element{
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .button{
   /* background-color: #009879; */
   border-radius: 5px;
@@ -75,6 +80,7 @@ input{
 label{
   cursor: pointer;
 }
+
 
 @media all and (min-width: 820px) {
 

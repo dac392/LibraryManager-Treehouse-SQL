@@ -1,0 +1,18 @@
+extends layout.pug
+
+block content
+    h1 #{page.title}
+    hr
+    form(action=`/books/${page.id}`, method="post") 
+        label(for="title") Title 
+        input(type="text", name="title", value= `${page.book.title}`)
+        label(for="author") Author 
+        input(type="text", name="author", value= `${page.book.author}`)
+        label(for="genre") Genre 
+        input(type="text", name="genre", value= `${page.book.genre}`)
+        label(for="year") Year
+        input(type="number", name="year", value= `${page.book.year}`)
+
+        button(type="submit", class="button") Update 
+        a(href="/", class="button cancel") Cancel   
+        a(href=`/books/${page.id}/delete`, class="button") Delete

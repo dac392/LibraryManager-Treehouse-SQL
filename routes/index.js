@@ -23,16 +23,22 @@ router.post('/books/new', async (req, res)=>{
   res.redirect('/');
 });
 
-router.get('books/:id', async (req, res)=>{
-
+router.get('/books/:id', async (req, res)=>{
+  const book = await Book.findByPk(req.params.id)
+  console.log(req.params.id);
+  const page = {title:"Update book", id:req.params.id, book}
+  res.render('update-book', {page})
 });
 
-router.post('books/:id', async (req, res)=>{
-
+router.post('/books/:id', async (req, res)=>{
+  const book = await Book.findByPk(req.params.id);
+  console.log(req.body)
+  await book.update(req.body);
+  res.redirect('/');
 });
 
-router.post('books/:id/delete', async (req, res)=>{
-
+router.post('/books/:id/delete', async (req, res)=>{
+  
 });
 
 
