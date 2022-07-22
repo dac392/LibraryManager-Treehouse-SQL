@@ -1,0 +1,20 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="../../stylesheets/style.css")
+        title Delete
+    body 
+        br
+        h2.center= page.title
+        hr
+        p.center 
+            | Are you sure you want to delete 
+            em= page.book.title
+            | ?
+        form(action="/books/" + page.book.id + "/delete", method="post")
+            a(href="/", class="button") No! Take me back! 
+            | 
+            button(type="submit", class = "button") "Yes, I'm sure"
