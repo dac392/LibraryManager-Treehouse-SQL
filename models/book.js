@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Book.init({
-    title: {Type:Sequelize.STRING, allowNull: false, validate:{notEmpty:{msg:"'title' field cannot be empty"}, notNull:{msg:"'title' field cannot be null"}}},
-    author: {Type:Sequelize.STRING, allowNull: false, validate:{notEmpty:{msg:"'author' field cannot be empty"}, notNull:{msg:"'author' field cannot be null"}}},
+    title: {type:DataTypes.STRING, allowNull: false, validate:{notEmpty:{msg:"'title' field cannot be empty"}, notNull:{msg:"'title' field cannot be null"}}},
+    author: {type:DataTypes.STRING, allowNull: false, validate:{notEmpty:{msg:"'author' field cannot be empty"}, notNull:{msg:"'author' field cannot be null"}}},
     genre: DataTypes.STRING,
     year: DataTypes.INTEGER
   }, {
