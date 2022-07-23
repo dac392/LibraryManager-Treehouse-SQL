@@ -1,0 +1,15 @@
+extends layout
+
+block content 
+    .input-container
+        label(for="title") Title 
+        input(type="text", name="title", value= `${book.title}`)
+    .input-container
+        label(for="author") Author 
+        input(type="text", name="author", value= `${book.author}`)
+    .input-container
+        label(for="genre") Genre 
+        input(type="text", name="genre", value= `${book.genre}`)
+    .input-container
+        label(for="year") Year
+        input(type="number", name="year", value= `${book.year}`)
