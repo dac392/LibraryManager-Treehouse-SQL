@@ -1,22 +1,11 @@
 extends layout.pug
 
 block content
-    h1 #{page.title}
+    h1 #{title}
     hr
-    form(action=`/books/${page.id}`, method="post") 
-        .input-container
-            label(for="title") Title 
-            input(type="text", name="title", value= `${page.book.title}`)
-        .input-container
-            label(for="author") Author 
-            input(type="text", name="author", value= `${page.book.author}`)
-        .input-container
-            label(for="genre") Genre 
-            input(type="text", name="genre", value= `${page.book.genre}`)
-        .input-container
-            label(for="year") Year
-            input(type="number", name="year", value= `${page.book.year}`)
-
+    form(action=`/books/${id}`, method="post")
+        include form-errors
+        include form
         button(type="submit", class="button") Update 
         a(href="/", class="button cancel") Cancel   
-        a(href=`/books/${page.id}/delete`, class="button") Delete
+        a(href=`/books/${id}/delete`, class="button") Delete 

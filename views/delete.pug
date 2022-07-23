@@ -8,13 +8,13 @@ html(lang="en")
         title Delete
     body 
         br
-        h2.center= page.title
+        h2.center= title
         hr
         p.center 
             | Are you sure you want to delete 
-            em= page.book.title
+            em= book.title
             | ?
-        form(action="/books/" + page.book.id + "/delete", method="post")
+        form(action="/books/" + book.id + "/delete", method="post")
             a(href="/", class="button") No! Take me back! 
             | 
             button(type="submit", class = "button") "Yes, I'm sure"
