@@ -2,6 +2,7 @@
 const {
   Model, Sequelize
 } = require('sequelize');
+/* EXPORTS book model w fields: title, author, genre, year */
 module.exports = (sequelize, DataTypes) => {
   class Book extends Model {}
   Book.init({

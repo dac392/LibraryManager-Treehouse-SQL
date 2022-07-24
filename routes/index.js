@@ -3,6 +3,9 @@ var router = express.Router();
 const Book = require('../models').Book;
 const {Op} = require('../models/index').Sequelize; 
 
+/**
+ * used to decide if the search query is properly formatted. 
+ * */
 function scan(str){
   const regex = /^(title|author|genre|year): ".+"( \^ (title|author|genre|year): ".+")?$/gi;
   console.log();
@@ -11,6 +14,11 @@ function scan(str){
     throw error;
   }
 }
+/**
+ * parses the query string for its components.
+ * @param {String} str 
+ * @returns json
+ */
 function parse(str){
   const arr = str.split(" ^ ");
   let title = "%";
@@ -64,11 +72,8 @@ router.post('/search', async function(req, res){
         ]
       }
     });
-    // console.dir(books);
     res.render('index',{title:"Search results", books, home: true});
   }catch(error){
-    // console.dir(error.name);
-    // console.dir(error.message);
     const books = await Book.findAll();
     res.render(`index`, { title: "Books", books, errors: [error]});
     
@@ -76,10 +81,12 @@ router.post('/search', async function(req, res){
 
 });
 
+/* GET new book page */
 router.get('/books/new', async (req, res)=>{
   res.render('new-book', {title:"New Book", book:{title:"", author:"", genre:"", year:""}});
 });
 
+/* POST new book and send you back to / */
 router.post('/books/new', async (req, res)=>{
   let book;
   try{
@@ -95,6 +102,7 @@ router.post('/books/new', async (req, res)=>{
   }
 });
 
+/* GET book/:id for update */
 router.get('/books/:id', async (req, res, next)=>{
   const book = await Book.findByPk(req.params.id)
   if(book)
@@ -108,6 +116,7 @@ router.get('/books/:id', async (req, res, next)=>{
   }
 });
 
+/* POST update */
 router.post('/books/:id', async (req, res)=>{
   let book;
   try{
@@ -126,11 +135,13 @@ router.post('/books/:id', async (req, res)=>{
 
 });
 
+/* GET delete confirmation page */
 router.get('/books/:id/delete', async (req, res)=>{
   const book = await Book.findByPk(req.params.id);
   res.render('delete', {title:"Delete", id:req.params.id, book})
 });
 
+/* POST delete and redirect to / */
 router.post('/books/:id/delete', async (req, res, next)=>{
   const book = await Book.findByPk(req.params.id)
   if(book){
