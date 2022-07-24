@@ -7,7 +7,7 @@ block content
   include home
   include form-errors
   form(action="/search", method="post", class="search") 
-    input(type="text", name="search", class="search", placeholder="Title:... and Author:...")
+    input(type="text", name="search", class="search", placeholder='Title: "name" ^ Author: "name"')
     button(type="submit", class="search") Search
   table 
     tr 
