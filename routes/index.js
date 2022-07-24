@@ -112,8 +112,10 @@ router.post('/search', async function(req, res){
     });
     res.render('index',{title:"Search results", books, home: true});
   }catch(error){
-    const books = await Book.findAll();
-    res.render(`index`, { title: "Books", books, errors: [error]});
+    const list = await Book.findAll();
+    const books = get_results(list, 1);
+    const numbers = range(1, Math.ceil(list.length/10));
+    res.render(`index`, { title: "Books", books, errors: [error], home:true, numbers});
     
   }
 

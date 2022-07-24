@@ -3,6 +3,10 @@ body {
     font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
   }
   
+  h1{
+    margin-top: 0;
+  }
+
   a {
     color: #019875;
     text-decoration: none;
