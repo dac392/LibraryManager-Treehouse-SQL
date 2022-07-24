@@ -10,7 +10,7 @@ function scan(str){
   const regex = /^(title|author|genre|year): ".+"( \^ (title|author|genre|year): ".+")?$/gi;
   console.log();
   if(!regex.test(str)){
-    error = new Error(`Oh no! your search "${str}" is not properly formatted. Remember, you can use " ^ " to represent AND, and to use the format:\t <key> "<value>"`);
+    error = new Error(`Oh no! your search "${str}" is not properly formatted. Remember, you can use " ^ " to represent AND, and to use the format:\t <key>: "<value>"`);
     throw error;
   }
 }
