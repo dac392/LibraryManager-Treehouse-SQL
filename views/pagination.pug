@@ -1,0 +1,8 @@
+if(numbers)
+  ul.page-container 
+    each num in numbers 
+      li 
+        if(num == selected)
+          p(class="button pagination selected") #{num}
+        else 
+          a(href=`/${num}` class="button pagination") #{num}

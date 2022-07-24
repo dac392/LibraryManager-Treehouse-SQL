@@ -46,15 +46,53 @@ function parse(str){
   }
   return {title, author, genre, year};
 }
+/**
+ * gets the subset of books to display
+ * @param {json list} books 
+ * @param {int} page 
+ * @returns list of books
+ */
+function get_results(books, page){
+  const perPage = 10;
+  const start = (page*perPage)-perPage;
+  const end = page*perPage;
+  list = [];
+  for(let i = 0; i < books.length; i++){
+    if(i>=start && i<end){
+      list.push(books[i]);
+    }
+  }
+  return list;
+}
+
+/**
+ * helper function to make a list of range of numbers
+ * @param {int} start 
+ * @param {int} end 
+ * @returns int list
+ */
+function range(start, end) {
+  return Array(end - start + 1).fill().map((_, idx) => start + idx)
+}
 
 
 /* GET home page. */
 router.get('/', async function(req, res) {
-  const books = await Book.findAll();
-  res.render('index',{title:"Books", books});
+  res.redirect('/1');
 });
 
-/* Search */
+/**
+ * GET route used for pagination
+ */
+router.get('/:id', async (req, res)=>{
+  const list = await Book.findAll();
+  const page = req.params.id;
+  const books = get_results(list, page);
+  const numbers = range(1, Math.ceil(list.length/10));
+  res.render('index', {title:"Books", books, numbers, selected:page});
+});
+
+/** Search route*/
 router.post('/search', async function(req, res){
   try{
     const str = req.body.search.toLowerCase();

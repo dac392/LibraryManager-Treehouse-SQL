@@ -17,7 +17,6 @@ body {
   a.button, button[type=submit] {
     border-radius: 5px;
     color: white;
-  
     border: 2px solid #009879;
     color: black; 
     padding: 16px 32px;
@@ -37,6 +36,28 @@ body {
     transition: 0.4s;
     margin-top: 1em;
     background-color: white;
+  }
+
+  ul.page-container{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    justify-content: center;
+  }
+
+  p[class="button pagination selected"]{
+    border-radius: 5px;
+    color: white;
+    border: 2px solid #009879;
+    background-color: #009879; 
+    padding: 16px 32px;
+    text-align: center;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 4px 2px;
+    overflow: hidden;
+    cursor: not-allowed;
   }
   
   .input-container{
