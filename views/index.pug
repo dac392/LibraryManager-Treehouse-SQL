@@ -4,7 +4,11 @@ block content
   h1 #{title}
   hr
   a(href="/books/new", class="button new") Create New Book 
-
+  include home
+  include form-errors
+  form(action="/search", method="post", class="search") 
+    input(type="text", name="search", class="search", placeholder="Title:... and Author:...")
+    button(type="submit", class="search") Search
   table 
     tr 
       th Title 

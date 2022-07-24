@@ -42,6 +42,14 @@ body {
   .input-container{
     margin-top: 1em;
   }
+
+  button.search{
+    margin-left: 5px;
+  }
+
+  form input.search{
+    padding: 16px 32px;
+  }
   
   a.button:hover, button[type=submit]:hover {
     background-color: #009879; /* Green */
@@ -115,8 +123,22 @@ body {
     color: rgb(236, 15, 15);
   }
 
-  form{
+  form:not([class="search"]){
     display: flex;
     flex-direction: column;
     padding:0 25%;
+  }
+
+  @media all and (max-width: 720px) {
+    form{
+      padding: 0;
+    }
+
+    form input.search{
+      width: 50%;
+    }
+
+    form a.button, button[type=submit]{
+      margin-left:0;
+    }
   }
