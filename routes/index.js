@@ -84,11 +84,16 @@ router.get('/', async function(req, res) {
 /**
  * GET route used for pagination
  */
-router.get('/:id', async (req, res)=>{
+router.get('/:id', async (req, res, next)=>{
   const list = await Book.findAll();
+  const max = Math.ceil(list.length/10);
   const page = req.params.id;
+  if(isNaN(page)|| page>max){
+    next();
+  }
+  
   const books = get_results(list, page);
-  const numbers = range(1, Math.ceil(list.length/10));
+  const numbers = range(1, max);
   res.render('index', {title:"Books", books, numbers, selected:page});
 });
 
